@@ -1,0 +1,99 @@
+{
+    "platforms": [
+        {
+            "name": "nix",
+            "outputDirectory": "out/nix/",
+            "pwd": "$(pwd)",
+            "outputFilePrefix": "#! /bin/bash\n\n",
+            "fileExtension": ""
+        },
+        {
+            "name": "powershell",
+            "outputDirectory": "out/powershell/",
+            "pwd": "{PWD}",
+            "outputFilePrefix": "",
+            "fileExtension": ".ps1"
+        },
+        {
+            "name": "cmd",
+            "outputDirectory": "out/cmd/",
+            "pwd": "%cd%",
+            "outputFilePrefix": "",
+            "fileExtension": ".bat"
+        }
+    ],
+    "customCommands": [
+        {
+            "name": "dcleanup",
+            "command": "docker image prune -af"    
+        }
+    ],
+    "containersToBuild": [
+    	{
+    		"group": "mysql",
+    		"organization": "mysql",
+    		"versions": ["latest", "5.6", "5.7", "8.0"],
+            "platform": "linux/x86_64",
+    		"ports": ["3306:3306"],
+            "command": "bash"
+    	},
+        {
+            "group": "elixir",
+            "organization": "elixir",
+            "versions": ["latest"],
+            "command": "bash"
+        },
+        {
+            "group": "composer",
+            "organization": "composer",
+            "versions": ["latest", "1", "2"],
+            "command": "bash"
+        },
+        {
+            "group": "dart",
+            "organization": "dart",
+            "versions": ["latest", "2", "2.10"],
+            "command": "bash"
+        },
+        {
+            "group": "dotnet",
+            "organization": "mcr.microsoft.com/dotnet/sdk",
+            "versions": ["latest", "3.1", "5.0"],
+            "command": "bash"
+        },
+        {
+            "group": "mariadb",
+            "organization": "mariadb",
+            "versions": ["latest"],
+            "platform": "linux/x86_64",
+            "ports": ["3306:3306"],
+            "command": "bash"
+        },
+        {
+            "group": "percona",
+            "organization": "percona",
+            "versions": ["latest", "8.0", "5.7", "5.6"],
+            "platform": "linux/x86_64",
+            "ports": ["3306:3306"],
+            "command": "bash"
+        },
+        {
+            "group": "php",
+            "organization": "php",
+            "versions": ["latest", "5.3", "5.4", "5.5", "5.6", "5.7", "7.0", "7.1", "7.2", "7.3", "7.4"],
+            "command": "bash"
+        },
+        {
+            "group": "node",
+            "organization": "node",
+            "versions": ["latest", "15", "14", "13", "12", "11"],
+            "command": "bash"
+        },
+        {
+            "group": "rust",
+            "organization": "rust",
+            "versions": ["latest"],
+            "command": "bash"
+        }
+    ]
+}
