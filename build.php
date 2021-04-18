@@ -2,9 +2,20 @@
 
 $containerJson = file_get_contents('containers.json');
 $containers = json_decode($containerJson, true);
-$powerShellPwd = '{PWD}';
-$winCmdPwd = '%cd%';
-$nixPwd = '$(pwd)';
+
+foreach($containers['platforms'] as $platform) {
+	if(!file_exists($platform['outputDirectory'])) {
+		mkdir($platform['outputDirectory'], 0777, true);
+	}
+}
+
+foreach($containers['customCommands'] as $customCommand) {
+	foreach($containers['platforms'] as $platform) {
+		$command = $platform['outputFilePrefix'] . $customCommand['command'];
+		$outPath = $platform['outputDirectory'] . $customCommand['name'] . $platform['fileExtension']; 
+		file_put_contents($outPath, $command);
+	}
+}
 
 foreach($containers['containersToBuild'] as $containerData) {
 	foreach($containerData['versions'] as $version) {
@@ -22,18 +33,21 @@ foreach($containers['containersToBuild'] as $containerData) {
 			$arch = ' --platform ' . $containerData['platform'];
 		}
 		
+		$network = '';
+		if(isset($containerData['network'])) {
+			$network = " --network={$containerData['network']}";
+		}
+		
 		foreach($containers['platforms'] as $platform) {
 			
-			$command = "docker run{$arch} -it --rm -v ##PWD##:/local ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
+			$command = "docker run{$arch} -it --rm$network -v ##PWD##:/local ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
 			$command = str_replace('##PWD##', $platform['pwd'], $command);
 			$outPath = $platform['outputDirectory'] . "d{$containerData['group']}{$fileVersion}" . $platform['fileExtension']; 
 				
 			$command = str_replace('##PORTS##', $ports, $command);
 			$command = $platform['outputFilePrefix'] . $command;
 			
-			echo $command . "\n";
-			
-			// file_put_contents($outPath, $command);
+			file_put_contents($outPath, $command);
 		}
 	}
 }
