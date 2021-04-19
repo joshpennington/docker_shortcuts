@@ -134,6 +134,15 @@
             "versions": ["latest", "13", "12", "11", "10", "9"],
             "network": "dockernet",
             "command": "bash"
+        },
+        {
+            "group": "mongo",
+            "organization": "mongo",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "ports": ["27017:27017"],
+            "command": "bash"
         }
     ]
 }
