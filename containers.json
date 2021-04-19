@@ -119,6 +119,21 @@
             "versions": ["latest", "31", "32", "33", "34", "35"],
             "network": "dockernet",
             "command": "bash"
+        },
+        {
+            "group": "arch",
+            "organization": "archlinux",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "command": "bash"
+        },
+        {
+            "group": "postgres",
+            "organization": "postgres",
+            "versions": ["latest", "13", "12", "11", "10", "9"],
+            "network": "dockernet",
+            "command": "bash"
         }
     ]
 }
