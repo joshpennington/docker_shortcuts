@@ -105,6 +105,20 @@
             "versions": ["latest"],
             "network": "dockernet",
             "command": "bash"
+        },
+        {
+            "group": "kali",
+            "organization": "kalilinux/kali-rolling",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "fedora",
+            "organization": "fedora",
+            "versions": ["latest", "31", "32", "33", "34", "35"],
+            "network": "dockernet",
+            "command": "bash"
         }
     ]
 }
