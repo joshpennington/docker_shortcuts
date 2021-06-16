@@ -1,0 +1,153 @@
+{
+    "platforms": [
+        {
+            "name": "nix",
+            "outputDirectory": "nix/",
+            "pwd": "$(pwd)",
+            "outputFilePrefix": "#! /bin/bash\n\n",
+            "fileExtension": ""
+        },
+        {
+            "name": "powershell",
+            "outputDirectory": "powershell/",
+            "pwd": "{PWD}",
+            "outputFilePrefix": "",
+            "fileExtension": ".ps1"
+        },
+        {
+            "name": "cmd",
+            "outputDirectory": "cmd/",
+            "pwd": "%cd%",
+            "outputFilePrefix": "",
+            "fileExtension": ".bat"
+        }
+    ],
+    "customCommands": [
+        {
+            "name": "dcleanup",
+            "command": "docker image prune -af"    
+        }
+    ],
+    "containersToBuild": [
+    	{
+    		"group": "mysql",
+    		"organization": "mysql",
+    		"versions": ["latest", "5.6", "5.7", "8.0"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "command": "bash"
+    	},
+        {
+            "group": "elixir",
+            "organization": "elixir",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "composer",
+            "organization": "composer",
+            "versions": ["latest", "1", "2"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "dart",
+            "organization": "dart",
+            "versions": ["latest", "2", "2.10"],
+            "platform": "linux/x86_64",
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "dotnet",
+            "organization": "mcr.microsoft.com/dotnet/sdk",
+            "versions": ["latest", "3.1", "5.0"],
+            "network": "dockernet",
+            "ports": ["5000:5000", "5001:5001"],
+            "command": "bash"
+        },
+        {
+            "group": "mariadb",
+            "organization": "mariadb",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "command": "bash"
+        },
+        {
+            "group": "percona",
+            "organization": "percona",
+            "versions": ["latest", "8.0", "5.7", "5.6"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "command": "bash"
+        },
+        {
+            "group": "php",
+            "organization": "php",
+            "versions": ["latest", "5.3", "5.4", "5.5", "5.6", "5.7", "7.0", "7.1", "7.2", "7.3", "7.4"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "node",
+            "organization": "node",
+            "versions": ["latest", "15", "14", "13", "12", "11"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "rust",
+            "organization": "rust",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "kali",
+            "organization": "kalilinux/kali-rolling",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "fedora",
+            "organization": "fedora",
+            "versions": ["latest", "31", "32", "33", "34", "35"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "arch",
+            "organization": "archlinux",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "command": "bash"
+        },
+        {
+            "group": "postgres",
+            "organization": "postgres",
+            "versions": ["latest", "13", "12", "11", "10", "9"],
+            "network": "dockernet",
+            "command": "bash"
+        },
+        {
+            "group": "mongo",
+            "organization": "mongo",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "platform": "linux/x86_64",
+            "ports": ["27017:27017"],
+            "command": "bash"
+        },
+        {
+            "group": "alpine",
+            "organization": "alpine",
+            "versions": ["latest", "3", "3.13", "3.12", "3.11", "3.10"],
+            "network": "dockernet",
+            "command": "sh"
+        }
+    ]
+}
