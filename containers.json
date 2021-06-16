@@ -35,7 +35,6 @@
     		"versions": ["latest", "5.6", "5.7", "8.0"],
             "network": "dockernet",
             "platform": "linux/x86_64",
-    		"ports": ["3306:3306"],
             "command": "bash"
     	},
         {
@@ -56,6 +55,7 @@
             "group": "dart",
             "organization": "dart",
             "versions": ["latest", "2", "2.10"],
+            "platform": "linux/x86_64",
             "network": "dockernet",
             "command": "bash"
         },
@@ -73,7 +73,6 @@
             "versions": ["latest"],
             "network": "dockernet",
             "platform": "linux/x86_64",
-            "ports": ["3306:3306"],
             "command": "bash"
         },
         {
@@ -82,7 +81,6 @@
             "versions": ["latest", "8.0", "5.7", "5.6"],
             "network": "dockernet",
             "platform": "linux/x86_64",
-            "ports": ["3306:3306"],
             "command": "bash"
         },
         {
