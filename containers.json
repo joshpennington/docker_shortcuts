@@ -26,6 +26,10 @@
         {
             "name": "dcleanup",
             "command": "docker image prune -af"    
+        },
+        {
+            "name": "dnetworksetup",
+            "command": "docker network create dockernet"    
         }
     ],
     "containersToBuild": [

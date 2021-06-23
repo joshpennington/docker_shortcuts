@@ -1,3 +1,6 @@
 nix/
 cmd/
 powershell/
+.DS_Store
+services/**/data
+services/**/.env
