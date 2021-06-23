@@ -1,0 +1,20 @@
+version: '3.1'
+
+services: 
+  mysql57:
+    container_name: 'mysql57'
+    platform: "linux/x86_64"
+    build: "./"
+    ports: 
+      - '${MYSQL_57_PORT}:3306'
+    volumes: 
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_57_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_57_USER}
+      MYSQL_PASSWORD: ${MYSQL_57_PASSWORD}
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet
