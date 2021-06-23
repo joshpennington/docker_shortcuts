@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  redis62:
+    image: redis:6.2
+    container_name: 'redis62'
+    restart: unless-stopped
+    ports:
+      - 6379:80
+    volumes:
+      - ./data:/data
+networks:
+  default:
+  external:
+    name: dockernet
