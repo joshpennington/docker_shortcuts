@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  mariadb10419:
+    container_name: 'mariadb10419'
+    image: mariadb:10.4.19
+    ports: 
+      - '${MARIADB_10419_PORT}:3306'
+    volumes: 
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_10419_ROOT_PASSWORD}
+      MYSQL_USER: ${MARIADB_10419_USER}
+      MYSQL_PASSWORD: ${MARIADB_10419_PASSWORD}
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: dockernet
