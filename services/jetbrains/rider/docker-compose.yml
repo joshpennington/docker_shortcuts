@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  rider:
+    container_name: 'rider'
+    image: registry.jetbrains.team/p/prj/containers/projector-rider
+    ports: 
+      - '${RIDER_PORT}:8887'
+    volumes: 
+      - ${RIDER_SRC_PATH}:/src
+      - ./data:/home/projector-user
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: dockernet
