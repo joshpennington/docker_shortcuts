@@ -8,6 +8,7 @@ services:
       - '${DATAGRIP_PORT}:8887'
     volumes: 
       - ${DATAGRIP_SRC_PATH}:/src
+      - ./data:/home/projector-user
     restart: unless-stopped
 
 networks:

@@ -8,6 +8,7 @@ services:
       - '${PHPSTORM_PORT}:8887'
     volumes: 
       - ${PHPSTORM_SRC_PATH}:/src
+      - ./data:/home/projector-user
     restart: unless-stopped
 
 networks:
