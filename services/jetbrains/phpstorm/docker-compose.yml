@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  phpstorm:
+    container_name: 'phpstorm'
+    image: registry.jetbrains.team/p/prj/containers/projector-phpstorm
+    ports: 
+      - '${PHPSTORM_PORT}:8887'
+    volumes: 
+      - ${PHPSTORM_SRC_PATH}:/src
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: dockernet
