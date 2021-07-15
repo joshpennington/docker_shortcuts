@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  datagrip:
+    container_name: 'datagrip'
+    image: registry.jetbrains.team/p/prj/containers/projector-datagrip
+    ports: 
+      - '${DATAGRIP_PORT}:8887'
+    volumes: 
+      - ${DATAGRIP_SRC_PATH}:/src
+      - ./data:/home/projector-user
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: dockernet
