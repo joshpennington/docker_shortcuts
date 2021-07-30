@@ -152,6 +152,13 @@
             "versions": ["latest", "3", "3.13", "3.12", "3.11", "3.10"],
             "network": "dockernet",
             "command": "sh"
+        },
+        {
+            "group": "golang",
+            "organization": "golang",
+            "versions": ["latest", "1.16", "1.15"],
+            "network": "dockernet",
+            "command": "sh"
         }
     ]
 }
