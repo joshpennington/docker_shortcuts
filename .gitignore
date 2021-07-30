@@ -4,3 +4,4 @@ powershell/
 .DS_Store
 services/**/data
 services/**/.env
+init-mongo.js
