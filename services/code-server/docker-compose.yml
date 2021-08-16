@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  code-server:
+    image: codercom/code-server:latest
+    container_name: 'code-server'
+    restart: unless-stopped
+    ports:
+      - '${CODE_SERVER_PORT}:8080'
+    volumes:
+      - ./data/config:/home/coder/.config
+      - ${CODE_SERVER_PROJECT_DIR}:/home/coder/project
+networks:
+  default:
+  external:
+    name: dockernet
