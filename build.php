@@ -40,7 +40,7 @@ foreach($containers['containersToBuild'] as $containerData) {
 		
 		foreach($containers['platforms'] as $platform) {
 			
-			$command = "docker run{$arch} -it --rm$network -v ##PWD##:/local ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
+			$command = "docker run{$arch} -it --rm$network -w /local -v ##PWD##:/local ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
 			$command = str_replace('##PWD##', $platform['pwd'], $command);
 			$outPath = $platform['outputDirectory'] . "d{$containerData['group']}{$fileVersion}" . $platform['fileExtension']; 
 				
