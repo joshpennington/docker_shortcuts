@@ -95,6 +95,14 @@
             "command": "bash"
         },
         {
+            "group": "phps",
+            "organization": "php",
+            "versions": ["latest", "5.3", "5.4", "5.5", "5.6", "5.7", "7.0", "7.1", "7.2", "7.3", "7.4"],
+            "network": "dockernet",
+            "ports": ["8000:8000"],
+            "command": "php -S 0.0.0.0:8000"
+        },
+        {
             "group": "node",
             "organization": "node",
             "versions": ["latest", "15", "14", "13", "12", "11"],
