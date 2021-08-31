@@ -1,0 +1,18 @@
+version: '3.1'
+
+services: 
+  elasticsearch:
+    container_name: 'elasticsearch'
+    image: 'elasticsearch:7.14.0'
+    ports: 
+      - '9200:9200'
+      - '9300:9300'
+    volumes: 
+      - ./data/data:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet
