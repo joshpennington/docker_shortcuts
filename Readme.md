@@ -1,27 +1,37 @@
 # Docker Shortcut Builder
 
-## What this is
+## What Is This?
 
-I originally made this as a set of Docker containers for me to have as part of my toolset. I would find that 
-I needed a tool of utility in a one off situation and I grew tired of installing them when I realistically
-only needed it once or twice.
+This is the result of moving most of my toolset to Docker. I grew tired of installing tons of software on my host 
+operating system when I could just install and run them temporarily using Docker. This has greatly improved my ability
+to get up and running quickly on a new machine. 
 
-Docker provides an excellent solution to this, but memorizing long commands was either difficult to do or I would 
-enter it incorrectly (usually forgetting -it or --rm). 
+It has grown from being a few scripts to also including several server programs that I use on a regular basis. Now 
+instead of just including functionality for development, it also can run everything my home server requires.
 
-Originally I created these scripts as static files, but then I moved from Windows to macOS and I had to rewrite
-them all. So I decided to make a config file to build all the containers I needed.
+I have done my best to include support for Windows, MacOS and Linux, but I must confess that I do not use Windows
+for much of anything outside gaming anymore so there may be some problems there (However if you're using this on
+Windows, I suggest you run this in the WSL where it should work perfectly)
 
-Some common uses for me have been:
+## How Do I Set This Up?
 
-* Importing / exporting a database from a version of MySQL that I did not readily have installed
-* Running an `npm` version that is either older or newer that what I have installed
-* Running running or compiling `python`
-* Running a random version of `php` without having to install it.
-* Get a quick, throwaway instance of Ubuntu or Kali for one of the utilities you are familiar with.
-* .net Core versions are a giant pain to deal with when you install them.
+### Configuration File
 
-## What this isn't
+Looking at `containers.json`, you will see the configuration for all the shell scripts that will be generated. 
+I will document this in greater detail down the road. 
 
-* Something that runs permanently or a setup for a production environment.
-* A replacement for a `docker-compose` file
+#### Scripts Support
+
+By default some containers will assume that a scripts directory is available. In `containers.json`, you may set 
+buildOptions.addScripts to false to disable this functionality. By default we assume that you will symlink the 
+scripts directory to your home directory named `docker_scripts`
+
+### Services
+
+The `services/` directory contains several directories for different services and versions that have been configured.
+Just go into the one you would like to launch, copy the `.env.example` file to `.env` if applicable and set your values.
+From there you just run the `docker-compose` command and you're ready to go.
+
+## Can I Contribute or Request Something New?
+
+Absolutely! Submit a Ticket or Pull Request. I can't guarantee anything, I am open to improving this tool!
