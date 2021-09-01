@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: 'portainer'
+    restart: unless-stopped
+    ports:
+      - ${PORTAINER_PORT_8000}:8000
+      - ${PORTAINER_PORT_9000}:9000
+    volumes: 
+      - ${PORTAINER_DOCKER_SOCK}:/var/run/docker.sock
+      - ./data:/data
+networks:
+  default:
+    external:
+      name: dockernet
