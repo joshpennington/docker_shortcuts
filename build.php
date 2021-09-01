@@ -38,9 +38,18 @@ foreach($containers['containersToBuild'] as $containerData) {
 			$network = " --network={$containerData['network']}";
 		}
 		
+		$volume = '-v ##PWD##:/local ';
+		if($containers['buildOptions']['addScripts']) {
+			if(isset($containerData['volume']) && is_array($containerData['volume'])) {
+				foreach($containerData['volume'] as $volumeEntry) {
+					$volume .= str_replace('##SCRIPTSLOCATION##', $containers['buildOptions']['scriptsLocation'], '-v ' . $volumeEntry);
+				}
+			}
+		}
+
 		foreach($containers['platforms'] as $platform) {
 			
-			$command = "docker run{$arch} -it --rm$network -w /local -v ##PWD##:/local ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
+			$command = "docker run{$arch} -it --rm$network -w /local $volume ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
 			$command = str_replace('##PWD##', $platform['pwd'], $command);
 			$outPath = $platform['outputDirectory'] . "d{$containerData['group']}{$fileVersion}" . $platform['fileExtension']; 
 				
