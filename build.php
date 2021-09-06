@@ -47,9 +47,14 @@ foreach($containers['containersToBuild'] as $containerData) {
 			}
 		}
 
+		$name = "";
+		if(isset($containerData['name'])) {
+			$name = " --name " . $containerData['name'] . ' ';
+		}
+
 		foreach($containers['platforms'] as $platform) {
 			
-			$command = "docker run{$arch} -it --rm$network -w /local $volume ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
+			$command = "docker run{$arch} -it $name--rm$network -w /local $volume ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
 			$command = str_replace('##PWD##', $platform['pwd'], $command);
 			$outPath = $platform['outputDirectory'] . "d{$containerData['group']}{$fileVersion}" . $platform['fileExtension']; 
 				
