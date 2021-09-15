@@ -1,0 +1,79 @@
+version: '3.1'
+
+services:
+  php54:
+    container_name: 'php54'
+    build: './../php5.4'
+    ports:
+      - '${PHP_54_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php55:
+    container_name: 'php55'
+    build: './../php5.5'
+    ports:
+      - '${PHP_55_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php56:
+    container_name: 'php56'
+    build: './../php5.6'
+    ports:
+      - '${PHP_56_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php70:
+    container_name: 'php70'
+    build: './../php7.0'
+    ports:
+      - '${PHP_70_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php71:
+    container_name: 'php71'
+    build: './../php7.1'
+    ports:
+      - '${PHP_71_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php72:
+    container_name: 'php72'
+    build: './../php7.2'
+    ports:
+      - '${PHP_72_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php73:
+    container_name: 'php73'
+    build: './../php7.3'
+    ports:
+      - '${PHP_73_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php74:
+    container_name: 'php74'
+    build: './../php7.4'
+    ports:
+      - '${PHP_74_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+  php80:
+    container_name: 'php80'
+    build: './../php8.0'
+    ports:
+      - '${PHP_80_PORT}:9000'
+    volumes:
+      - '${PHP_ALL_WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet
