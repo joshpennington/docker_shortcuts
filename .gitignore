@@ -5,3 +5,6 @@ powershell/
 services/**/data
 services/**/.env
 init-mongo.js
+default.conf
+nginx.conf
+build.sh
