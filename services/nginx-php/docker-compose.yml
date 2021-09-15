@@ -1,0 +1,72 @@
+version: '3.1'
+
+services:
+  nginx-web:
+    container_name: 'nginx-web'
+    hostname: 'nginx-php'
+    image: nginx:1.21
+    restart: unless-stopped
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${NGINX_PHP_WEBROOT}:/webroot:ro
+    ports: 
+      - "80:80"
+  nginx-php80:
+    container_name: 'nginx-php80'
+    build: './php80'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php74:
+    container_name: 'nginx-php74'
+    build: './php74'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php73:
+    container_name: 'nginx-php73'
+    build: './php73'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php72:
+    container_name: 'nginx-php72'
+    build: './php72'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php71:
+    container_name: 'nginx-php71'
+    build: './php71'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php70:
+    container_name: 'nginx-php70'
+    build: './php70'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php56:
+    container_name: 'nginx-php56'
+    build: './php56'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php55:
+    container_name: 'nginx-php55'
+    build: './php55'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+  nginx-php54:
+    container_name: 'nginx-php54'
+    build: './php54'
+    volumes:
+      - '${NGINX_PHP_WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet
