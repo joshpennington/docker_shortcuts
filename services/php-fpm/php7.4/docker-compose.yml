@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  php74:
+    container_name: 'php74'
+    build: './'
+    ports:
+      - '${PHP_80_PORT}:9000'
+    volumes:
+      - '${PHP_80_WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet

@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  php73:
+    container_name: 'php73'
+    build: './'
+    ports:
+      - '${PHP_73_PORT}:9000'
+    volumes:
+      - '${PHP_73_WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet

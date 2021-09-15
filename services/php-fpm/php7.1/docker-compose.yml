@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  php71:
+    container_name: 'php71'
+    build: './'
+    ports:
+      - '${PHP_71_PORT}:9000'
+    volumes:
+      - '${PHP_71_WEBROOT}:/webroot'
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: dockernet
