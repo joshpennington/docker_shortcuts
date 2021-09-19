@@ -8,3 +8,4 @@ init-mongo.js
 default.conf
 nginx.conf
 build.sh
+*.conf
