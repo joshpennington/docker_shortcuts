@@ -6,7 +6,7 @@ services:
     container_name: 'redis62'
     restart: unless-stopped
     ports:
-      - 6379:80
+      - 6379:6379
     volumes:
       - ./data:/data
 networks:

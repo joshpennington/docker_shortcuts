@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   mariadb10419:
-    container_name: 'mariadb10419'
+    container_name: 'mariadb'
     image: mariadb:10.4.19
     ports: 
       - '${MARIADB_10419_PORT}:3306'
