@@ -9,3 +9,4 @@ default.conf
 nginx.conf
 build.sh
 *.conf
+containers.local.json

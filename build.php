@@ -3,6 +3,12 @@
 $containerJson = file_get_contents('containers.json');
 $containers = json_decode($containerJson, true);
 
+if(file_exists('containers.local.json')) {
+	$localJson = file_get_contents('containers.local.json');
+	$localContainers = json_decode($localJson, true);
+	$containers = array_merge_recursive($containers, $localContainers);
+}
+
 foreach($containers['platforms'] as $platform) {
 	if(!file_exists($platform['outputDirectory'])) {
 		mkdir($platform['outputDirectory'], 0777, true);
