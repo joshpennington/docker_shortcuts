@@ -124,8 +124,9 @@
         {
             "group": "node",
             "organization": "node",
-            "versions": ["latest", "15", "14", "13", "12", "11"],
+            "versions": ["latest", "15", "14", "13", "12", "11", "16", "17"],
             "network": "dockernet",
+            "ports": ["3000:3000"],
             "command": "bash"
         },
         {
@@ -198,6 +199,13 @@
             "volume": [
                 "##SCRIPTSLOCATION##/gcloud:/scripts"
             ]
+        },
+        {
+            "group": "ruby",
+            "organization": "ruby",
+            "versions": ["latest"],
+            "network": "dockernet",
+            "command": "bash"
         }
     ]
 }
