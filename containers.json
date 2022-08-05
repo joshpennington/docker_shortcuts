@@ -1,7 +1,6 @@
 {
     "buildOptions": {
-        "addScripts": true,
-        "scriptsLocation": "~/docker_scripts"
+        "addScripts": true
     },
     "platforms": [
         {

@@ -1,4 +1,7 @@
 {
+    "buildOptions": {
+        "scriptsLocation": "~/docker_scripts"
+    },
     "platforms": [
         {
             "name": "powershell",
