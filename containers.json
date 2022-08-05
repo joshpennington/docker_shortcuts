@@ -12,19 +12,22 @@
             "fileExtension": "",
             "cliParametersProcessing": [
                 "port=\"###DEFAULT_PORT###\"",
-                "cmd=\"###DEFAULT_COMMAND###\"",
-
+                "default_cmd=\"###DEFAULT_CMD###\"",
+                "cmd=\"\"",
                 "for var in \"$@\"",
                 "do",
                 "    if [[ $var == *\"-p=\"* ]]; then",
                 "        IFS='='",
                 "        read -ra ADDR <<< \"$var\"",
-                "        port=\"$port -p ${ADDR[1]}\" ",
+                "        port=\"$port -p ${ADDR[1]} \"",
                 "        IFS=' '",
                 "    else",
                 "        cmd=\"$cmd $var\"",
                 "    fi",
-                "done"
+                "done",
+                "if [[ $cmd == \"\" ]]; then",
+                "    cmd=\"$default_cmd\"",
+                "fi"
             ]
         }
     ],

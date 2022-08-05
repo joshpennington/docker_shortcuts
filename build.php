@@ -64,7 +64,7 @@ foreach($containers['containersToBuild'] as $containerData) {
 
 			$command = <<<EOF
 			{$cliProcessing}
-			docker run{$arch} -it $name--rm$network -w /local $volume \$port {$containerData['organization']}:$version {$containerData['command']}
+			docker run{$arch} -it $name--rm$network -w /local $volume \$port {$containerData['organization']}:$version \$cmd
 			EOF;
 
 			// $command = "docker run{$arch} -it $name--rm$network -w /local $volume ##PORTS##{$containerData['organization']}:$version {$containerData['command']}";
@@ -72,6 +72,7 @@ foreach($containers['containersToBuild'] as $containerData) {
 			$outPath = $platform['outputDirectory'] . "d{$containerData['group']}{$fileVersion}" . $platform['fileExtension']; 
 				
 			$command = str_replace('###DEFAULT_PORT###', $ports, $command);
+			$command = str_replace('###DEFAULT_CMD###', $containerData['command'] ?? "", $command);
 			//$command = $platform['outputFilePrefix'] . $command;
 			
 			file_put_contents($outPath, $command);
